@@ -34,7 +34,7 @@ else:
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 INSTALLED_APPS = [
-    # "jazzmin",
+    "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -146,12 +146,12 @@ CORS_ALLOWED_ORIGINS = [
     'https://localhost',
 ]
 
-# JAZZMIN_SETTINGS = {
-#     "site_title": "ExplainAI Admin",
+JAZZMIN_SETTINGS = {
+    "site_title": "ExplainAI Admin",
 
-#     "site_header": "ExplainAI",
+    "site_header": "ExplainAI",
 
-#     "site_brand": "ExplainAI",
+    "site_brand": "ExplainAI",
 
-#     "site_logo": BASE_DIR / "static/logo.png",
-# }
+    "site_logo": BASE_DIR / "static/logo.png",
+}
