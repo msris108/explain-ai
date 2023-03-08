@@ -1,0 +1,76 @@
+{% extends 'main/base.html' %} 
+{% block title %}
+Free Version
+{% endblock %} 
+{% block content %} 
+  <div class="card prompt-card" style="border-radius: 10px;">
+    <div class="card-header">
+      <h3>Free Version</h3>
+    </div>
+    <div class="card-body">
+      <div class="alert alert-danger" id="alert" role="alert" style="display: none;">
+        Please enter a Prompt! 👾
+      </div>
+      <label for="query">Enter a prompt</label>
+      <input name="query" id="query" class="form-control form-control-lg" maxlength="40">  </input>
+      <br />      
+      <button type="button" class="btn btn-primary btn-lg btn-block" onclick="doApiRequest()">Explain It</button>
+      <br />
+      <center>
+      <div id="loader" style="display: none;">
+        <div class="spinner-grow text-primary" role="status">
+        </div>
+        <div class="spinner-grow text-secondary" role="status">
+        </div>
+        <div class="spinner-grow text-success" role="status">
+        </div>
+        <div class="spinner-grow text-danger" role="status">
+        </div>
+        <div class="spinner-grow text-warning" role="status">
+        </div>
+        <div class="spinner-grow text-info" role="status">
+        </div>
+        <div class="spinner-grow text-dark" role="status">
+        </div>
+        </div>
+        <div class="container">
+          <h4 id="query-heading"> </h4>
+          <p class="lead" id="prompt"> </p>
+        </div>
+      </div>
+      </center>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    function doApiRequest() {
+      document.getElementById("loader").style.display = "block";
+      if(document.getElementById("query").value === "") {
+        document.getElementById("alert").style.display = "block";
+        document.getElementById("query-heading").innerText = ""
+        document.getElementById("prompt").innerHTML = "";
+        document.getElementById("loader").style.display = "none";
+        return; 
+      }
+      $.ajax({
+        type: 'GET',
+        url: "http://localhost:8000/api/explain/" + document.getElementById("query").value + "/" + "text-davinci-003" + "/" + "10",
+        headers: { "Authorization": "{{ Authorization }}"},
+        success: function (data) {
+          console.log("Success", data) 
+          document.getElementById("query-heading").innerText = document.getElementById("query").value
+          document.getElementById("prompt").innerHTML = data.prompt;
+          document.getElementById("alert").style.display = "none";
+          document.getElementById("loader").style.display = "none";
+        },
+        error: function (data) {
+          document.getElementById("query-heading").innerText = "Server Error :("
+          document.getElementById("prompt").innerHTML = "Please try after sometime";
+          document.getElementById("alert").style.display = "none";
+          document.getElementById("loader").style.display = "none";
+        }
+      });
+    }          
+  </script>
+{% endblock %}

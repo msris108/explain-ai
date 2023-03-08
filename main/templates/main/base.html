@@ -1,0 +1,174 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <!-- add icon link -->
+    <link rel="icon" href="{% static '/logo.png' %}" type="image/x-icon" />
+    <title>{% block title %}My Site{% endblock %}</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+      <!-- Brand -->
+      <a class="navbar-brand" href="/home">
+        <img
+          src="{% static '/logo.png' %}"
+          width="30"
+          height="30"
+          class="d-inline-block align-top"
+          alt=""
+        />
+        ExplainAI <span class="badge badge-secondary">Beta</span>
+      </a>
+
+      <!-- Toggler/collapsibe Button -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#collapsibleNavbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar links -->
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/free">Free</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pro">Pro</a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">{{user.username}} | Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    <div class="container">{% block content %} {% endblock %}</div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Footer -->
+    <footer
+      class="text-center text-lg-start text-white"
+      style="background-color: #1c2331"
+    >
+      <!-- Section: Social media -->
+      <section
+        class="d-flex justify-content-between p-4"
+        style="background-color: #6351ce"
+      >
+        <!-- Left -->
+        <div class="me-5">
+          <span>Get connected with me on social networks:</span>
+        </div>
+        <!-- Left -->
+
+        <!-- Right -->
+        <div>
+          <a href="https://linktr.ee/msris108" class="text-white me-4">
+            Social Links
+          </a>
+          <!-- <a href="" class="text-white me-4">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-google"></i>
+          </a>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-github"></i>
+          </a> -->
+        </div>
+        <!-- Right -->
+      </section>
+      <!-- Section: Social media -->
+
+      <!-- Section: Links  -->
+      <section class="">
+        <div class="container text-center text-md-start mt-5">
+          <!-- Grid row -->
+          <div class="row mt-3">
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+              <!-- Content -->
+              <h6 class="text-uppercase fw-bold">ExplainAI</h6>
+              <hr
+                class="mb-4 mt-0 d-inline-block mx-auto"
+                style="width: 60px; background-color: #7c4dff; height: 2px"
+              />
+              <p>
+                Fill this form to get access to pro for free: <a href="/pro" class="text-white">Click Here!</a>
+              </p>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold">Products</h6>
+              <hr
+                class="mb-4 mt-0 d-inline-block mx-auto"
+                style="width: 60px; background-color: #7c4dff; height: 2px"
+              />
+              <p>
+                <a href="/free" class="text-white">ExplainAI - ExplainIT</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white"> More products coming soon! </a>
+              </p>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold">Contact</h6>
+              <hr
+                class="mb-4 mt-0 d-inline-block mx-auto"
+                style="width: 60px; background-color: #7c4dff; height: 2px"
+              />
+              <p><i class="fas fa-envelope mr-3"></i> msris108@gmail.com</p>
+              <p><i class="fas fa-phone mr-3"></i> +91 9123539217</p>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+        </div>
+      </section>
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2023 Copyright:
+        <a class="text-white" href="https://mdbootstrap.com/"
+          >ExplainAI</a
+        >
+      </div>
+    </footer>
+  </body>
+</html>
