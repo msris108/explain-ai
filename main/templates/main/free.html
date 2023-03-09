@@ -55,7 +55,7 @@ Free Version
       }
       $.ajax({
         type: 'GET',
-        url: "http://localhost:8000/api/explain/" + document.getElementById("query").value + "/" + "text-davinci-003" + "/" + "10",
+        url: "{{ Url }}" + "/api/explain/" + document.getElementById("query").value + "/" + "text-davinci-003" + "/" + "10",
         headers: { "Authorization": "{{ Authorization }}"},
         success: function (data) {
           console.log("Success", data) 

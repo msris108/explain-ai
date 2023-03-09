@@ -12,7 +12,7 @@ environ.Env.read_env()
 
 openai.api_key =  env('OPENAI_KEY')
 
-def ChatGPT(query, model, level):
+def ChatGPT(query, model):
    """
    This function uses the OpenAI API to generate a response to the given
    user_query using the ChatGPT model
@@ -20,7 +20,7 @@ def ChatGPT(query, model, level):
    # Use the OpenAI API to generate a response
    completion = openai.Completion.create(
       engine=model,
-      prompt="Explain " + query + " to a " + level + " old kid.",
+      prompt=query,
       max_tokens=1024,
       n=1,
       temperature=0.5,
@@ -44,6 +44,23 @@ def getPrompt(request, query, model, level):
         "query": query,
         "model": model,
         "level": level,
-        "prompt": ChatGPT(query, model, level),
+        "prompt": ChatGPT("Explain " + query + " to a " + level + " old kid.", model),
+    }
+    return Response(prompt)
+
+@api_view(['GET'])
+def getLinkedInPost(request, query): 
+    prompt = {
+        "query": query,
+        "prompt": ChatGPT("Write a small linkedIn post about" + query, "text-davinci-003"),
+    }
+    return Response(prompt)
+
+
+@api_view(['GET'])
+def getMovieSummary(request, query): 
+    prompt = {
+        "query": query,
+        "prompt": ChatGPT("Summarize the movie" + query + "If it exists, else just tell me to look for another movie", "text-davinci-003"),
     }
     return Response(prompt)

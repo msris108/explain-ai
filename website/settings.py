@@ -21,21 +21,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env("SECRET_KEY")
 
 DEBUG = False
-# ALLOWED_HOSTS = ["*"]
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
+ALLOWED_HOSTS = ['localhost', '.vercel.app', '.now.sh']
 
 MEDIA_URL = 'media/'
 STATIC_URL = 'static/'
 
-# if DEBUG:
-#     STATICFILES_DIRS = [
-#         BASE_DIR / 'static',
-#     ] 
-# else: 
-#     STATIC_ROOT = BASE_DIR / 'static'
-
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+if DEBUG:
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'static'),
+    ] 
+else: 
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -140,7 +136,18 @@ REST_FRAMEWORK = {
     ),
 }
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://\w+\.vercel\.com$",
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "https://example.com",
+    "https://sub.example.com",
+    "http://localhost:8080",
+    "http://127.0.0.1:9000",
+    "http://explain-ai-msris108.vercel.app",
+    "https://explain-ai-msris108.vercel.app",
+]
 
 JAZZMIN_SETTINGS = {
     "site_title": "ExplainAI Admin",
@@ -149,5 +156,5 @@ JAZZMIN_SETTINGS = {
 
     "site_brand": "ExplainAI",
 
-    "site_logo": BASE_DIR / "static/logo.png",
+    "site_logo": "https://github.com/msris108/explain-ai/blob/main/static/logo.png",
 }

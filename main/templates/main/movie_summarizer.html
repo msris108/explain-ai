@@ -1,34 +1,22 @@
 {% extends 'main/base.html' %} 
 {% block title %}
-Pro Version
+Movie Summary
 {% endblock %} 
 {% block content %} 
   <div class="card prompt-card" style="border-radius: 10px;">
     <div class="card-header">
-      <h3>Pro Version</h3>
+      <h3>Get the plot of the movie!</h3>
     </div>
     <div class="card-body">
+      <center>
+        <img src="{% static '/movie.png' %}" class="svg-app">
+      </center>
       <div class="alert alert-danger" id="alert" role="alert" style="display: none;">
-        Please enter a Prompt! 👾
+        Please enter a movie title! 👾
       </div>
-      <label for="models">Choose a model:</label>
-      <select name="models" id="models" class="form-control form-control-lg">
-        <option value="text-davinci-003">text-davinci-003</option>
-        <option value="text-babbage-001">text-babbage-001</option>
-        <option value="text-curie-001">text-curie-001</option>
-        <option value="text-ada-001">text-ada-001</option>
-      </select>
-
-      <label for="levels">Choose a level:</label>
-      <select name="levels" id="levels" class="form-control form-control-lg">
-        <option value="5">👶</option>
-        <option value="10">👦</option>
-        <option value="15">👨‍🎓</option>
-      </select>
-
       <label for="query">Enter a prompt</label>
-      <input name="query" id="query" class="form-control form-control-lg" maxlength="40">  </input>
-      <br />
+      <input name="query" id="query" class="form-control form-control-lg" maxlength="40" placeholder="Inception, Matrix ...">  </input>
+      <br />      
       <button type="button" class="btn btn-primary btn-lg btn-block" onclick="doApiRequest()">Explain It</button>
       <br />
       <center>
@@ -70,12 +58,18 @@ Pro Version
       }
       $.ajax({
         type: 'GET',
-        url: "{{ Url }}" + "/api/explain/" + document.getElementById("query").value + "/" + document.getElementById("models").value + "/" + document.getElementById("levels").value,
+        url: "{{ Url }}" + "/api/movie/" + document.getElementById("query").value,
         headers: { "Authorization": "{{ Authorization }}"},
         success: function (data) {
           console.log("Success", data) 
-          document.getElementById("query-heading").innerHTML = document.getElementById("query").value;
+          document.getElementById("query-heading").innerText = document.getElementById("query").value
           document.getElementById("prompt").innerHTML = data.prompt;
+          document.getElementById("alert").style.display = "none";
+          document.getElementById("loader").style.display = "none";
+        },
+        error: function (data) {
+          document.getElementById("query-heading").innerText = "Server Error :("
+          document.getElementById("prompt").innerHTML = "Please try after sometime";
           document.getElementById("alert").style.display = "none";
           document.getElementById("loader").style.display = "none";
         }

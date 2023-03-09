@@ -10,7 +10,7 @@ import environ
 env = environ.Env()
 environ.Env.read_env()
 
-auth = { "Authorization": "Token " + env("TOKEN") }
+auth = { "Authorization": "Token " + env("TOKEN"), "Url": "http://explain-ai-msris108.vercel.app/" }
 
 def home(request): 
     return render(request, "main/home.html")
@@ -21,10 +21,11 @@ def free(request):
 
 @login_required(login_url="/login")
 def pro(request): 
-    if request.user.groups.filter(name="test"):
-        return render(request, "main/pro.html", auth)
-    else:
-        return render(request, "main/get_pro.html", auth)
+    # if request.user.groups.filter(name="test"):
+    #     return render(request, "main/pro.html", auth, auth)
+    # else:
+    #     return render(request, "main/get_pro.html", auth)
+    return render(request, "main/pro.html", auth)
 
 def sign_up(request):
     if request.method == 'POST':
@@ -36,3 +37,11 @@ def sign_up(request):
     else:
         form = RegisterForm()
     return render(request, 'registration/sign_up.html', {"form": form})
+
+@login_required(login_url="/movie")
+def movie(request): 
+    return render(request, "main/movie_summarizer.html", auth)
+
+@login_required(login_url="/linkedin")
+def linkedin(request): 
+    return render(request, "main/linkedin_prompt.html", auth)
