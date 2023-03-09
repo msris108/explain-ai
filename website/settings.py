@@ -21,17 +21,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env("SECRET_KEY")
 
 DEBUG = False
-ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
 
 MEDIA_URL = '/media/'
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 
-if DEBUG:
-    STATICFILES_DIRS = [
-        BASE_DIR / 'static',
-    ] 
-else: 
-    STATIC_ROOT = BASE_DIR / 'static'
+# if DEBUG:
+#     STATICFILES_DIRS = [
+#         BASE_DIR / 'static',
+#     ] 
+# else: 
+#     STATIC_ROOT = BASE_DIR / 'static'
+
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
