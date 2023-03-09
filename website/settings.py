@@ -25,7 +25,7 @@ DEBUG = False
 ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
 
 MEDIA_URL = '/media/'
-# STATIC_URL = '/static/'
+STATIC_URL = '/static/'
 
 # if DEBUG:
 #     STATICFILES_DIRS = [
@@ -34,8 +34,8 @@ MEDIA_URL = '/media/'
 # else: 
 #     STATIC_ROOT = BASE_DIR / 'static'
 
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+# STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
