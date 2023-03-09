@@ -7,7 +7,7 @@
         "config": { "distDir": "static" }
       },
       {
-        "src": "website/wsgi.py",
+        "src": "main/wsgi.py",
         "use": "@vercel/python",
         "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
       }
@@ -19,7 +19,7 @@
       },
       {
         "src": "/(.*)",
-        "dest": "website/wsgi.py"
+        "dest": "main/wsgi.py"
       }
     ]
   }
