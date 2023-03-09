@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Asap&family=Roboto:ital,wght@0,500;0,900;1,500&display=swap");
+
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Asap", sans-serif;
+  background-color: hsl(240, 100%, 94%);
+}
+
+*{
+  box-sizing: border-box;
+}
+
+/* HOME PAGE */
+header {
+  width: 100%;
+  height: 40vh;
+  display: inline-block;
+  flex-direction: column;
+  align-items: center;
+}
+
+header h1 {
+  position: relative;
+  font-size: 60px;
+  font-weight: 600;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;   
+}
+
+header .header-1{
+  background-image: repeating-radial-gradient(farthest-side at 5px 5px,#6c63ff, #2a2765, #6c63ff);
+}
+
+
+/* LOADING PAGE */
+.loading-page-spinner{
+    display: none;
+}
+
+/* LOGIN SECTION */
+.login-card{
+    width: 80%; 
+    margin: auto; 
+    margin-top: 100px;  
+    margin-bottom: 100px;  
+}
+
+@media (min-width: 600px) {
+    .login-card{
+        width: 50%; 
+        margin: auto; 
+        margin-top: 100px;
+        margin-bottom: 100px;  
+    }
+}
+
+/* SIGNUP SECTION */
+.signup-card{
+    width: 80%; 
+    margin: auto; 
+    margin-top: 50px;  
+    margin-bottom: 50px;
+}
+
+@media (min-width: 600px) {
+    .signup-card{
+        width: 50%; 
+        margin: auto; 
+        margin-top: 50px;
+        margin-bottom: 50px;  
+    }
+}
+
+/* PROMPT CARD */
+.prompt-card{
+    margin: auto; 
+    margin-top: 50px;  
+    margin-bottom: 50px;
+}
+
+.jumbo-box{
+    margin-top: 10px;
+}
