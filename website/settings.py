@@ -24,8 +24,8 @@ DEBUG = False
 # ALLOWED_HOSTS = ["*"]
 ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
 
-MEDIA_URL = '/media/'
-STATIC_URL = '/static/'
+MEDIA_URL = 'media/'
+STATIC_URL = 'static/'
 
 # if DEBUG:
 #     STATICFILES_DIRS = [
