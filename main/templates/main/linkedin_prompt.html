@@ -1,4 +1,5 @@
 {% extends 'main/base.html' %} 
+{% load static %}
 {% block title %}
 LinkedIn Post
 {% endblock %} 
@@ -9,7 +10,7 @@ LinkedIn Post
     </div>
     <div class="card-body">
       <center>
-        <img src="{% static '/social.png' %}" class="svg-app">
+        <img src="{% static '/social.svg' %}" class="svg-app">
       </center>
       <div class="alert alert-danger" id="alert" role="alert" style="display: none;">
         Please enter a Prompt! 👾

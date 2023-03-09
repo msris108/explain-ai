@@ -1,4 +1,5 @@
 {% extends 'main/base.html' %} 
+{% load static %}
 {% block title %}
 Movie Summary
 {% endblock %} 
@@ -9,7 +10,7 @@ Movie Summary
     </div>
     <div class="card-body">
       <center>
-        <img src="{% static '/movie.png' %}" class="svg-app">
+        <img src="{% static '/movie.svg' %}" class="svg-app">
       </center>
       <div class="alert alert-danger" id="alert" role="alert" style="display: none;">
         Please enter a movie title! 👾

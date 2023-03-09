@@ -10,7 +10,7 @@ import environ
 env = environ.Env()
 environ.Env.read_env()
 
-auth = { "Authorization": "Token " + env("TOKEN"), "Url": "http://explain-ai-msris108.vercel.app/" }
+auth = { "Authorization": "Token " + env("TOKEN"), "Url": "https://explain-ai-msris108.vercel.app/" }
 
 def home(request): 
     return render(request, "main/home.html")
