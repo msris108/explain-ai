@@ -23,14 +23,15 @@ SECRET_KEY = env("SECRET_KEY")
 DEBUG = False
 ALLOWED_HOSTS = ["*"]
 
-MEDIA_URL = 'media/'
-STATIC_URL = 'static/'
+MEDIA_URL = '/media/'
+STATIC_URL = '/static/'
 
-STATIC_ROOT = BASE_DIR / 'productionfiles'
-
-STATICFILES_DIRS = [
-    BASE_DIR / 'globalstaticfiles'
-] 
+if DEBUG:
+    STATICFILES_DIRS = [
+        BASE_DIR / 'static',
+    ] 
+else: 
+    STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
