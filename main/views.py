@@ -38,10 +38,10 @@ def sign_up(request):
         form = RegisterForm()
     return render(request, 'registration/sign_up.html', {"form": form})
 
-@login_required(login_url="/movie")
+@login_required(login_url="/login")
 def movie(request): 
     return render(request, "main/movie_summarizer.html", auth)
 
-@login_required(login_url="/linkedin")
+@login_required(login_url="/login")
 def linkedin(request): 
     return render(request, "main/linkedin_prompt.html", auth)
