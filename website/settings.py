@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = env("SECRET_KEY")
 
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['localhost', '.vercel.app', '.now.sh']
 
 MEDIA_URL = 'media/'
@@ -152,5 +152,5 @@ JAZZMIN_SETTINGS = {
 
     "site_brand": "ExplainAI",
 
-    "site_logo": "https://github.com/msris108/explain-ai/blob/main/static/logo.png",
+    "site_logo": os.path.join(BASE_DIR, "/static/logo.png"),
 }
